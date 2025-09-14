@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raghu Engineering College - Campus Find the Lost Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-search-location" aria-hidden="true"></i>
+                <span>Campus Find the Lost</span>
+                <div id="collegeIndicator" class="college-indicator" style="display: none;">
+                    <i class="fas fa-university" aria-hidden="true"></i>
+                    <span id="currentCollegeName">Loading...</span>
+                    <button id="changeCollegeBtn" class="btn-change-college" title="Change College">
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#lost" class="nav-link">Report Lost</a></li>
+                <li><a href="#found" class="nav-link">Post Found</a></li>
+                <li><a href="#browse" class="nav-link">Browse Items</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Find What's Lost. Return What's Found.</h1>
+                <p>Welcome to the campus community's official Lost & Found hub. Perfect for Raghu Engineering College students and other Vizag colleges! Misplaced something? Found an item? You're in the right place. Let's work together to reconnect lost belongings with their owners.</p>
+                <div class="hero-buttons">
+                    <a href="#lost" id="heroReportLostBtn" class="btn btn-primary">
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> I Lost Something
+                    </a>
+                    <a href="#found" id="heroPostFoundBtn" class="btn btn-secondary">
+                        <i class="fas fa-hand-holding-heart" aria-hidden="true"></i> I Found Something
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-search-location" aria-hidden="true"></i>
+            </div>
+        </section>
+
+        <section id="lost" class="section">
+            <div class="container">
+                <h2><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Report a Lost Item</h2>
+                <p>Please tell us about your lost item. Providing clear details like the last-seen location, a good description, and any unique marks is the best way to help others identify and return it to you.</p>
+                
+                <form id="lostForm" class="form">
+                    <div class="form-group">
+                        <label for="lostItemName">Item Name *</label>
+                        <input type="text" id="lostItemName" name="itemName" required placeholder="e.g., Black iPhone 13 Pro">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lostCategory">Category *</label>
+                            <select id="lostCategory" name="category" required></select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lostLocation">Last Seen Location *</label>
+                            <input type="text" id="lostLocation" name="location" placeholder="e.g., Library 2nd Floor, Main Cafeteria" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lostDate">Date Lost *</label>
+                            <input type="date" id="lostDate" name="dateLost" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lostTime">Approximate Time</label>
+                            <input type="time" id="lostTime" name="timeLost">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lostDescription">Detailed Description *</label>
+                        <textarea id="lostDescription" name="description" rows="4" placeholder="e.g., Small scratch on the top left corner, has a blue case with a sticker." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lostContact">Your Email Address *</label>
+                        <input type="email" id="lostContact" name="contact" placeholder="your.email@example.com" required>
+                        <small>For safety, please provide your email address. This will be shared with finders to contact you.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lostReward">Reward (Optional)</label>
+                        <input type="text" id="lostReward" name="reward" placeholder="e.g., ₹500, A coffee, Eternal gratitude">
+                    </div>
+                    
+                    <input type="hidden" id="lostCollege" name="college">
+                    <input type="hidden" id="lostStudentName" name="studentName">
+                    <input type="hidden" id="lostStudentEmail" name="studentEmail">
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit My Lost Item
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="found" class="section">
+            <div class="container">
+                <h2><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> Post a Found Item</h2>
+                <p>Thank you for helping a fellow community member! Please describe the item you found. Your post will help the owner find it.</p>
+                
+                <form id="foundForm" class="form">
+                    <div class="form-group">
+                        <label for="foundItemName">Item Name *</label>
+                        <input type="text" id="foundItemName" name="itemName" required placeholder="e.g., Silver Water Bottle">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="foundCategory">Category *</label>
+                             <select id="foundCategory" name="category" required></select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foundLocation">Found Location *</label>
+                            <input type="text" id="foundLocation" name="location" placeholder="e.g., Near the main gate, Chemistry Lab" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="foundDate">Date Found *</label>
+                            <input type="date" id="foundDate" name="dateFound" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foundTime">Time Found</label>
+                            <input type="time" id="foundTime" name="timeFound">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="foundDescription">Description *</label>
+                        <textarea id="foundDescription" name="description" rows="4" placeholder="Describe the item (color, brand, condition, etc.)" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="foundImage">Upload Image (Optional)</label>
+                        <input type="file" id="foundImage" name="image" accept="image/*">
+                        <small>A clear image greatly helps the owner identify their item.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="foundCurrentLocation">Current Item Location *</label>
+                        <input type="text" id="foundCurrentLocation" name="currentLocation" placeholder="e.g., Handed to security, At the front desk" required>
+                    </div>
+                    
+                    <input type="hidden" id="foundCollege" name="college">
+                    <input type="hidden" id="foundStudentName" name="studentName">
+                    <input type="hidden" id="foundStudentEmail" name="studentEmail">
+                    
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-upload" aria-hidden="true"></i> Post the Found Item
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="browse" class="section">
+            <div class="container">
+                <h2><i class="fas fa-search" aria-hidden="true"></i> Browse Listings</h2>
+                <p>Look through the listings below to see if your item has been found or if you recognize something that belongs to someone else. Use the search and filters to narrow down the results.</p>
+                
+                <div id="collegeFilterBadge" class="college-filter-badge" style="display: none;">
+                    <i class="fas fa-university" aria-hidden="true"></i>
+                    <span>Showing items from: <strong id="collegeFilterText">Loading...</strong></span>
+                </div>
+                
+                <div class="search-filters">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search by item name, description, location...">
+                        <button type="button" id="searchBtn" aria-label="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="categoryFilter" aria-label="Filter by Category"></select>
+                        <select id="typeFilter" aria-label="Filter by Type"></select>
+                        <button id="clearFiltersBtn" class="btn btn-outline">Clear Filters</button>
+                        
+                        <button id="cleanupOldItemsBtn" class="btn btn-secondary" style="background: #e74c3c;">
+                            <i class="fas fa-broom" aria-hidden="true"></i> Cleanup Old Items
+                        </button>
+                    </div>
+                <div id="itemsContainer" class="items-grid">
+                    </div>
+                    <h2 style="margin-top: 4rem; text-align: center;">
+                        <i class="fas fa-handshake" aria-hidden="true"></i> Success Stories
+                    </h2>
+                    <div id="historyContainer" class="items-grid">
+                        </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2><i class="fas fa-question-circle" aria-hidden="true"></i> Frequently Asked Questions</h2>
+                <p style="max-width: 800px; margin: 0 auto 4rem auto;">Here are answers to some common questions. If you need more help, please contact Campus Security.</p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>How long do items stay on the portal?</h4>
+                        <p>Lost items remain active until you mark them as 'found'. Unclaimed found items are automatically cleared from the main view after a few days to keep the listings current, but success stories are kept in a separate section.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What should I do after I find my item?</h4>
+                        <p>That's great news! Please click the "I Found This!" button on your original lost item post. This moves it to the "Success Stories" section and helps keep the portal organized for everyone.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is my email address public?</h4>
+                        <p>Yes, the email address you provide is visible so that finders or owners can reach you directly. For your safety, we only accept email addresses, not phone numbers. Please only provide an email you are comfortable sharing with the campus community.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What if no one claims an item I found?</h4>
+                        <p>After a reasonable amount of time, we recommend turning the item into the central campus security or administrative office. The system automatically cleans up very old posts to keep the portal focused on active items.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Campus Find the Lost</h3>
+                    <p>Connecting our community, one found item at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#lost">Report Lost</a></li>
+                        <li><a href="#found">Post Found</a></li>
+                        <li><a href="#browse">Browse Items</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <address>
+                        Campus Security<br>
+                        Visakhapatnam, Andhra Pradesh<br>
+                        Email: <a href="mailto:campusfindthelost@gmail.com">campusfindthelost@gmail.com</a>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Campus Find the Lost. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="markAsFoundModal" class="modal">
+        <div class="modal-content">
+            <button class="close" id="closeMarkAsFoundModal" aria-label="Close">&times;</button>
+            <h3>🎉 You Found an Item!</h3>
+            <p>That's wonderful! Please provide your details so the owner can get in touch with you and arrange pickup.</p>
+            <form id="markAsFoundForm" class="form" style="padding: 2rem 0; box-shadow: none; border: none; background: transparent;">
+                <input type="hidden" id="markAsFoundItemId">
+                
+                <div class="form-group">
+                    <label for="finderName">Your Name *</label>
+                    <input type="text" id="finderName" required placeholder="e.g., John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="finderContact">Your Email Address *</label>
+                    <input type="email" id="finderContact" required placeholder="your.email@example.com">
+                    <small>For safety, please provide your email address. This will be shared with the item owner.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="finderLocation">Current Location of the Item *</label>
+                    <input type="text" id="finderLocation" required placeholder="e.g., Security Office, Library Front Desk, Room 201">
+                    <small>Where can the owner pick up the item?</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="finderNotes">Additional Notes</label>
+                    <textarea id="finderNotes" rows="3" placeholder="Any additional details about the item's condition, pickup time, or special instructions..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pickupTime">Preferred Pickup Time</label>
+                    <select id="pickupTime">
+                        <option value="">Select preferred time</option>
+                        <option value="morning">Morning (8 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                        <option value="evening">Evening (4 PM - 8 PM)</option>
+                        <option value="anytime">Anytime</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-bell" aria-hidden="true"></i> Submit & Notify Owner
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <button class="close" id="closeSuccessModal" aria-label="Close">&times;</button>
+            <i class="fas fa-check-circle success-icon" aria-hidden="true"></i>
+            <h3>Success!</h3>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+    
+    <div id="itemReunitedModal" class="modal">
+        <div class="modal-content">
+            <button class="close" id="closeItemReunitedModal" aria-label="Close">&times;</button>
+            <div class="reunion-header">
+                <i class="fas fa-heart reunion-icon" aria-hidden="true"></i>
+                <h3>🎉 Item Reunited!</h3>
+            </div>
+            <div id="reunionDetails">
+                <p><strong>Great news!</strong> Your item has been found and is ready for pickup.</p>
+                
+                <div class="finder-info">
+                    <h4>Finder's Details:</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Name:</strong> <span id="reunionFinderName"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Contact:</strong> <span id="reunionFinderContact"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Item Location:</strong> <span id="reunionItemLocation"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Pickup Time:</strong> <span id="reunionPickupTime"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="notes-section" id="reunionNotesSection" style="display: none;">
+                        <h4>Additional Notes:</h4>
+                        <p id="reunionNotes"></p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success" onclick="contactFinder()">
+                        <i class="fas fa-phone" aria-hidden="true"></i> Contact Finder
+                    </button>
+                    <button class="btn btn-modal-close" onclick="closeReunionModal()">
+                        <i class="fas fa-check" aria-hidden="true"></i> Got It
+                    </button>
+                </div>
+            </div>
+        </div>          
+    </div>
+
+    <div id="claimItemModal" class="modal">
+        <div class="modal-content">
+            <button class="close" id="closeClaimItemModal" aria-label="Close">&times;</button>
+            <h3>🔍 Claim This Item</h3>
+            <p>Please provide details to prove this item belongs to you. The finder will be notified and can verify your claim.</p>
+            <form id="claimItemForm" class="form" style="padding: 2rem 0; box-shadow: none; border: none; background: transparent;">
+                <input type="hidden" id="claimItemId">
+                
+                <div class="form-group">
+                    <label for="claimerName">Your Name *</label>
+                    <input type="text" id="claimerName" required placeholder="e.g., John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="claimerEmail">Your Email Address *</label>
+                    <input type="email" id="claimerEmail" required placeholder="your.email@example.com">
+                    <small>This will be shared with the finder to arrange pickup.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="claimDescription">Describe the Item *</label>
+                    <textarea id="claimDescription" rows="4" required placeholder="Please provide specific details about the item to prove ownership (e.g., brand, color, size, unique features, damage marks, etc.)"></textarea>
+                    <small>Be as specific as possible to help the finder verify your claim.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="claimLocation">Where Did You Lose It? *</label>
+                    <input type="text" id="claimLocation" required placeholder="e.g., Library, Cafeteria, Room 201, Parking Lot">
+                    <small>This helps verify your claim.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="claimDate">When Did You Lose It? *</label>
+                    <input type="date" id="claimDate" required>
+                    <small>Approximate date when you lost the item.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="claimNotes">Additional Proof (Optional)</label>
+                    <textarea id="claimNotes" rows="3" placeholder="Any additional information that could help prove ownership (e.g., receipts, photos, unique identifiers)"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-hand-paper" aria-hidden="true"></i> Submit Claim
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- College Selection Modal -->
+    <div id="collegeSelectionModal" class="modal" style="display: block;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="college-selection-header">
+                <i class="fas fa-university" aria-hidden="true"></i>
+                <h3>Select Your College</h3>
+                <p>Choose your college to access the campus lost and found portal. Raghu Engineering College students and other Vizag colleges are welcome!</p>
+            </div>
+            <form id="collegeSelectionForm" class="form" style="padding: 2rem 0; box-shadow: none; border: none; background: transparent;">
+                <div class="form-group">
+                    <label for="collegeSelect">Your College *</label>
+                    <select id="collegeSelect" required>
+                        <option value="">Select your college...</option>
+                        
+                        <!-- Raghu Engineering College -->
+                        <option value="raghu-engineering">Raghu Engineering College</option>
+                        <option value="raghu-institute">Raghu Institute of Technology</option>
+                        <option value="raghu-college">Raghu College of Engineering</option>
+                        
+                        <!-- Other Engineering Colleges in Vizag -->
+                        <option value="andhra-university">Andhra University</option>
+                        <option value="gitam-university">GITAM University</option>
+                        <option value="iiit-vizag">IIIT Vizag</option>
+                        <option value="anits-vizag">ANITS (Anil Neerukonda Institute of Technology)</option>
+                        <option value="gvp-vizag">GVP College of Engineering</option>
+                        <option value="gitam-vizag">GITAM Institute of Technology</option>
+                        <option value="sri-sai-institute">Sri Sai Institute of Technology</option>
+                        <option value="sri-chaitanya">Sri Chaitanya Institute of Technology</option>
+                        <option value="narayana-engineering">Narayana Engineering College</option>
+                        <option value="veltech-university">Veltech University</option>
+                        <option value="sathyabama-university">Sathyabama University</option>
+                        <option value="vels-university">Vels University</option>
+                        <option value="bharat-university">Bharat University</option>
+                        <option value="cmr-university">CMR University</option>
+                        <option value="gni-university">GNI University</option>
+                        <option value="vignan-university">Vignan University</option>
+                        <option value="vit-university">VIT University</option>
+                        <option value="kl-university">KL University</option>
+                        <option value="srm-university">SRM University</option>
+                        <option value="amrita-university">Amrita University</option>
+                        <option value="anna-university">Anna University</option>
+                        <option value="jntu-vizag">JNTU Vizag</option>
+                        <option value="jntu-kakinada">JNTU Kakinada</option>
+                        <option value="vishnu-institute">Vishnu Institute of Technology</option>
+                        <option value="sri-padmavati">Sri Padmavati Mahila Visvavidyalayam</option>
+                        <option value="gayatri-vidya">Gayatri Vidya Parishad College of Engineering</option>
+                        <option value="lendi-institute">Lendi Institute of Engineering and Technology</option>
+                        <option value="pragati-engineering">Pragati Engineering College</option>
+                        <option value="sri-sivani">Sri Sivani College of Engineering</option>
+                        
+                        <option value="other">Other College/University</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="customCollegeGroup" style="display: none;">
+                    <label for="customCollegeName">College/University Name *</label>
+                    <input type="text" id="customCollegeName" placeholder="Enter your college name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentName">Your Name *</label>
+                    <input type="text" id="studentName" required placeholder="e.g., John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentEmail">Your Email Address *</label>
+                    <input type="email" id="studentEmail" required placeholder="your.email@example.com">
+                    <small>This will be used for notifications and contact purposes.</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Access Portal
+                </button>
+                
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

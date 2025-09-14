@@ -1,0 +1,22 @@
+{
+  "name": "raghu-campus-lost-found",
+  "version": "1.0.0",
+  "description": "Campus Lost and Found Portal for Raghu Engineering College",
+  "main": "server-excel.js",
+  "scripts": {
+    "start": "node server-excel.js",
+    "dev": "node server-excel.js"
+  },
+  "keywords": ["lost", "found", "campus", "college", "raghu", "engineering"],
+  "author": "Raghu Engineering College",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "xlsx": "^0.18.5",
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/
+*.log
+.env
+.DS_Store
+lost_found_items.xlsx
